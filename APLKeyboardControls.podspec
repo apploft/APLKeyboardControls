@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
   
   s.author       = { "Michael Kamphausen" => "michael.kamphausen@apploft.de" }
   
-  s.platform     = :ios
+  s.platform     = :ios, '5.0'
 
   s.source       = { :git => "https://github.com/apploft/APLKeyboardControls.git", :tag => s.version.to_s }
 
