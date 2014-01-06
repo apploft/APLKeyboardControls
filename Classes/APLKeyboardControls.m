@@ -77,6 +77,10 @@
             [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextViewTextDidBeginEditingNotification object:input];
             UITextView* textView = input;
             textView.inputAccessoryView = nil;
+        } else if ([input isKindOfClass:[UISearchBar class]]) {
+            [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextViewTextDidBeginEditingNotification object:input];
+            UISearchBar *searchBar = input;
+            searchBar.inputAccessoryView = nil;
         }
     }
     
@@ -91,6 +95,10 @@
             [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(inputDidBeginEditing:) name:UITextViewTextDidBeginEditingNotification object:input];
             UITextView* textView = input;
             textView.inputAccessoryView = self.inputAccessoryView;
+        } else if ([input isKindOfClass:[UISearchBar class]]) {
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(inputDidBeginEditing:) name:UITextViewTextDidBeginEditingNotification object:input];
+            UISearchBar *searchBar = input;
+            searchBar.inputAccessoryView = self.inputAccessoryView;
         }
     }
 }
