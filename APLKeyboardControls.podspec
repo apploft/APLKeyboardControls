@@ -1,12 +1,12 @@
 Pod::Spec.new do |s|
 
   s.name         = "APLKeyboardControls"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "inputAccesoryView above the keyboard with done button and optional previous and next buttons"
 
   s.description  = <<-DESC
                    * close the keyboard with a done button
-                   * navigate between text fields and text views with optional previous and next buttons
+                   * navigate between text fields, text views and search bars with optional previous and next buttons
                    * skips hidden inputs
                    * completely customizable bar button items and toolbar
                    * implemented with iOS 7 in mind
