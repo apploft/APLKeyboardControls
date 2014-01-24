@@ -187,7 +187,7 @@
 }
 
 /**
- *  Add left and right arrow images as previous/next controls. Because this is a pod we cannot include source .png file.
+ *  Add left and right arrow images as previous/next controls
  *  We use base64Encoded strings that represent our desired images and decode them into NSData and after that create UIImage from data.
  *  The imageName param represents either leftArrowImage or rightArrowImage method name. We dynamically create a selector from this string
  *  and call the appropriate method to get the right base64Encoded image string
