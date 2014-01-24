@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "APLKeyboardControls"
-  s.version      = "0.0.2"
+  s.version      = "0.1.0"
   s.summary      = "inputAccesoryView above the keyboard with done button and optional previous and next buttons"
 
   s.description  = <<-DESC
@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
 
   s.source_files  = 'Classes', 'Classes/**/*.{h,m}'
   s.exclude_files = 'Classes/Exclude'
-
+  s.dependency 'NSData+Base64', '~> 1.0.0'
   s.requires_arc = true
 
 end
