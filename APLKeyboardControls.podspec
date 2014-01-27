@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
 
   s.description  = <<-DESC
                    * close the keyboard with a done button
-                   * navigate between text fields, text views and search bars with optional previous and next buttons
+                   * navigate between UIResponder subclasses like text fields and text views with optional previous and next buttons
                    * skips hidden inputs
                    * completely customizable bar button items and toolbar
                    * implemented with iOS 7 in mind
@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
 
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   
-  s.author       = { "Michael Kamphausen" => "michael.kamphausen@apploft.de" }
+  s.author       = { "Michael Kamphausen" => "michael.kamphausen@apploft.de", "Christopher Groß" => "christopher.gross@apploft.de" }
   
   s.platform     = :ios, '5.0'
 

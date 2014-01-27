@@ -2,11 +2,13 @@ APLKeyboardControls
 =========
 InputAccesoryView above the keyboard with done button and optional previous and next buttons.
 
+![Screenshot](screenshot.png "Keyboard Controls")
+
 * close the keyboard with a done button
-* navigate between text fields, text views and search bars with optional previous and next buttons
+* navigate between UIResponder subclasses like text fields and text views with optional previous and next buttons
 * skips hidden inputs
 * completely customizable bar button items and toolbar
-* implemented with iOS 7 in mind
+* looks like the InputAccesoryView in Safari, implemented with iOS 7 in mind
 
 ## Installation
 Install via cocoapods by adding this to your Podfile:
@@ -27,3 +29,5 @@ Define keyboardControls as a property in your viewController and initialize it l
 Customize buttons like this:
 
 	self.keyboardControls.doneButton.tintColor = [UIColor redColor];
+	
+In case you want to use the keyboardControls for other UIResponder subclasses than UITextField and UITextView, for example UISearchBar or a UIButton subclass that can become first responder, send an APLKeyboardControlsInputDidBeginEditingNotification as soon as your subclass becomes first responder, so the keyboardControls get notified about the first responder change.

@@ -6,6 +6,8 @@
 
 @interface APLKeyboardControls : NSObject
 
+extern NSString* const APLKeyboardControlsInputDidBeginEditingNotification;
+
 @property (nonatomic, strong) NSArray* inputFields;
 @property (nonatomic, assign) BOOL hasPreviousNext;
 @property (nonatomic, strong) UIBarButtonItem* previousButton;

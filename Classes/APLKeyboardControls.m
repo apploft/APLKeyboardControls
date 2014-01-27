@@ -16,6 +16,8 @@
 
 @implementation APLKeyboardControls
 
+NSString* const APLKeyboardControlsInputDidBeginEditingNotification = @"APLKeyboardControlsInputDidBeginEditingNotification";
+
 #pragma mark - initialization
 
 - (id)initWithInputFields:(NSArray*)inputFields {
@@ -25,6 +27,8 @@
     }
     return self;
 }
+
+#pragma mark - properties
 
 - (UIBarButtonItem *)doneButton {
     if (!_doneButton) {
@@ -79,36 +83,30 @@
 
 - (void)setInputFields:(NSArray *)inputFields {
     for (id input in _inputFields) {
-        if ([input isKindOfClass:[UITextField class]]) {
-            [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidBeginEditingNotification object:input];
-            UITextField* textField = input;
-            textField.inputAccessoryView = nil;
-        } else if ([input isKindOfClass:[UITextView class]]) {
-            [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextViewTextDidBeginEditingNotification object:input];
-            UITextView* textView = input;
-            textView.inputAccessoryView = nil;
-        } else if ([input isKindOfClass:[UISearchBar class]]) {
-            [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextViewTextDidBeginEditingNotification object:input];
-            UISearchBar *searchBar = input;
-            searchBar.inputAccessoryView = nil;
+        if ([input respondsToSelector:@selector(setInputAccessoryView:)]) {
+            ((UITextField*)input).inputAccessoryView = nil;
+            if ([input isKindOfClass:[UITextField class]]) {
+                [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidBeginEditingNotification object:input];
+            } else if ([input isKindOfClass:[UITextView class]]) {
+                [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextViewTextDidBeginEditingNotification object:input];
+            } else {
+                [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextViewTextDidBeginEditingNotification object:input];
+            }
         }
     }
     
     _inputFields = inputFields;
     
     for (id input in _inputFields) {
-        if ([input isKindOfClass:[UITextField class]]) {
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(inputDidBeginEditing:) name:UITextFieldTextDidBeginEditingNotification object:input];
-            UITextField* textField = input;
-            textField.inputAccessoryView = self.inputAccessoryView;
-        } else if ([input isKindOfClass:[UITextView class]]) {
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(inputDidBeginEditing:) name:UITextViewTextDidBeginEditingNotification object:input];
-            UITextView* textView = input;
-            textView.inputAccessoryView = self.inputAccessoryView;
-        } else if ([input isKindOfClass:[UISearchBar class]]) {
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(inputDidBeginEditing:) name:UITextViewTextDidBeginEditingNotification object:input];
-            UISearchBar *searchBar = input;
-            searchBar.inputAccessoryView = self.inputAccessoryView;
+        if ([input respondsToSelector:@selector(setInputAccessoryView:)]) {
+            ((UITextField*)input).inputAccessoryView = self.inputAccessoryView;
+            if ([input isKindOfClass:[UITextField class]]) {
+                [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(inputDidBeginEditing:) name:UITextFieldTextDidBeginEditingNotification object:input];
+            } else if ([input isKindOfClass:[UITextView class]]) {
+                [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(inputDidBeginEditing:) name:UITextViewTextDidBeginEditingNotification object:input];
+            } else {
+                [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(inputDidBeginEditing:) name:UITextViewTextDidBeginEditingNotification object:input];
+            }
         }
     }
 }
@@ -185,6 +183,8 @@
 - (void)closeInput:(id)sender {
     [self.currentInput resignFirstResponder];
 }
+
+#pragma mark - inline images
 
 /**
  *  Add left and right arrow images as previous/next controls
