@@ -13,7 +13,7 @@ InputAccesoryView above the keyboard with done button and optional previous and 
 ## Installation
 Install via cocoapods by adding this to your Podfile:
 
-	pod "APLKeyboardControls", "~> 0.1.0"
+	pod "APLKeyboardControls"
 
 ## Usage
 Import header file:

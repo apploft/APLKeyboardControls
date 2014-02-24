@@ -90,7 +90,7 @@ NSString* const APLKeyboardControlsInputDidBeginEditingNotification = @"APLKeybo
             } else if ([input isKindOfClass:[UITextView class]]) {
                 [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextViewTextDidBeginEditingNotification object:input];
             } else {
-                [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextViewTextDidBeginEditingNotification object:input];
+                [[NSNotificationCenter defaultCenter] removeObserver:self name:APLKeyboardControlsInputDidBeginEditingNotification object:input];
             }
         }
     }
@@ -105,7 +105,7 @@ NSString* const APLKeyboardControlsInputDidBeginEditingNotification = @"APLKeybo
             } else if ([input isKindOfClass:[UITextView class]]) {
                 [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(inputDidBeginEditing:) name:UITextViewTextDidBeginEditingNotification object:input];
             } else {
-                [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(inputDidBeginEditing:) name:UITextViewTextDidBeginEditingNotification object:input];
+                [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(inputDidBeginEditing:) name:APLKeyboardControlsInputDidBeginEditingNotification object:input];
             }
         }
     }
