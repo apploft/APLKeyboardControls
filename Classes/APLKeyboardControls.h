@@ -19,5 +19,6 @@ extern NSString* const APLKeyboardControlsInputDidBeginEditingNotification;
 
 - (void)focusPrevious:(id)sender;
 - (void)focusNext:(id)sender;
+- (void)closeInput:(id)sender;
 
 @end
