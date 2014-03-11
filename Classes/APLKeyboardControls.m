@@ -184,6 +184,10 @@ NSString* const APLKeyboardControlsInputDidBeginEditingNotification = @"APLKeybo
     [self.currentInput resignFirstResponder];
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 #pragma mark - inline images
 
 /**
