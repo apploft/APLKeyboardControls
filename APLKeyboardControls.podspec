@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "APLKeyboardControls"
-  s.version      = "0.1.2"
+  s.version      = "0.1.3"
   s.summary      = "inputAccesoryView above the keyboard with done button and optional previous and next buttons"
 
   s.description  = <<-DESC
